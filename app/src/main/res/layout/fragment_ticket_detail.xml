@@ -38,4 +38,16 @@
         android:layout_height="wrap_content"
         android:text="Solved" />
 
+    <EditText
+        android:id="@+id/ticketTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter a title" />
+
+    <CheckBox
+        android:id="@+id/ticketSolved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Solved" />
+
 </LinearLayout>
