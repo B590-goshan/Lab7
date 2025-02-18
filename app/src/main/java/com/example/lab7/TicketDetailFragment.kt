@@ -55,7 +55,7 @@ class TicketDetailFragment : Fragment() {
             }
         }
     }
-
+    // Binding
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
