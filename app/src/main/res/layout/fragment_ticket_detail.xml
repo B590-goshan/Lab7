@@ -13,10 +13,12 @@
         android:text="Title" />
 
     <EditText
-        android:id="@+id/ticket_title"
+        android:id="@+id/ticketTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter a title for the ticket."
+        android:hint="Enter a title"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:importantForAutofill="no"
         android:inputType="text" />
 
@@ -27,14 +29,15 @@
         android:text="Details" />
 
     <Button
-        android:id="@+id/ticket_date"
+        android:id="@+id/ticketDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Wed May 11 11:56 EST 2022" />
+        tools:text="Wed May 11 11:56 EST 2022"
+        android:enabled="false"/>
 
     <CheckBox
-        android:id="@+id/ticket_solved"
-        android:layout_width="match_parent"
+        android:id="@+id/ticketSolved"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Solved" />
 
