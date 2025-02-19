@@ -16,6 +16,7 @@ class TicketDetailFragment : Fragment() {
         get() = checkNotNull(_binding) {
             "Cannot access the view because it is null."
         }
+
     lateinit var ticket: Ticket
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +42,8 @@ class TicketDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+            ticketTitle.setText(ticket.title) // ✅ Set initial text
+
             ticketTitle.doOnTextChanged { text, _, _, _ ->
                 ticket = ticket.copy(title = text.toString())
             }
@@ -55,7 +58,7 @@ class TicketDetailFragment : Fragment() {
             }
         }
     }
-    // Binding
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
