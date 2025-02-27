@@ -29,8 +29,12 @@ class TicketDetailFragmentTest {
 
         // Verify that the fragment's Ticket object is updated correctly
         scenario.onFragment { fragment ->
-            assert(fragment.ticket.title == "Test Ticket Title") { "Title did not update!" }
-            assert(fragment.ticket.isSolved) { "CheckBox did not update!" }
+            val viewModel = fragment.ticketDetailViewModel
+
+            viewModel.ticket.observe(fragment.viewLifecycleOwner) { ticket ->
+                assert(ticket?.title == "Test Ticket Title") { "Title did not update!" }
+                assert(ticket?.isSolved == true) { "CheckBox did not update!" }
+            }
         }
     }
 }
