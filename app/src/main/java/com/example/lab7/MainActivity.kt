@@ -1,4 +1,4 @@
-package com.iub.lab7
+package com.example.lab7
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
