@@ -24,11 +24,10 @@ class TicketDetailFragment : Fragment(R.layout.fragment_ticket_detail) {
         super.onCreate(savedInstanceState)
 
         ticket = Ticket(
-            id = UUID.randomUUID(),
+            id = UUID.randomUUID().toString(),
             title = "",
-            date = Date(),
-            isSolved = false,
-            requiresManager = false
+            date = Date().time,
+            isSolved = false
         )
     }
 
