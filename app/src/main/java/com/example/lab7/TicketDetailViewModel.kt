@@ -1,4 +1,4 @@
-package com.iub.lab7
+package com.example.lab7
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
