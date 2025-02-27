@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.example.lab7.databinding.FragmentTicketDetailBinding
 import java.util.Date
 import java.util.UUID
-import androidx.core.widget.doOnTextChanged
 
-class TicketDetailFragment : Fragment() {
+class TicketDetailFragment : Fragment(R.layout.fragment_ticket_detail) {
     private var _binding: FragmentTicketDetailBinding? = null
     private val binding
         get() = checkNotNull(_binding) {
@@ -19,13 +19,16 @@ class TicketDetailFragment : Fragment() {
 
     lateinit var ticket: Ticket
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         ticket = Ticket(
             id = UUID.randomUUID(),
             title = "",
             date = Date(),
-            isSolved = false
+            isSolved = false,
+            requiresManager = false
         )
     }
 
@@ -33,7 +36,7 @@ class TicketDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentTicketDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,8 +45,6 @@ class TicketDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            ticketTitle.setText(ticket.title) // ✅ Set initial text
-
             ticketTitle.doOnTextChanged { text, _, _, _ ->
                 ticket = ticket.copy(title = text.toString())
             }
@@ -63,4 +64,5 @@ class TicketDetailFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
