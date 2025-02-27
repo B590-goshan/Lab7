@@ -20,6 +20,11 @@ class TicketHolder(
         binding.root.setOnClickListener {
             Toast.makeText(binding.root.context, "${ticket.title} clicked!", Toast.LENGTH_SHORT).show()
         }
+        binding.ticketSolved.visibility = if (ticket.isSolved) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
     }
 }
 
