@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab7.databinding.ListItemTicketBinding
 import com.example.lab7.databinding.ListItemTicketManagerBinding
+import android.view.View
 
 private const val NORMAL_TICKET = 0
 private const val MANAGER_TICKET = 1
