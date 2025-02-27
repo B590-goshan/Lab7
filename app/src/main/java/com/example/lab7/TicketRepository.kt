@@ -18,6 +18,7 @@ class TicketRepository private constructor(
         TicketDatabase::class.java,
         DATABASE_NAME
     )
+        .addMigrations(migration_1_2)
         .build()
 
     fun getTickets(): Flow<List<Ticket>> = database.ticketDao().getTickets()
