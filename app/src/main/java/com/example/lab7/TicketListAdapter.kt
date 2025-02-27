@@ -20,19 +20,19 @@ class TicketHolder(
     private val dateFormat = SimpleDateFormat("EEEE, dd MMM yyyy, HH:mm", Locale.getDefault()) // Format
 
     fun bind(ticket: Ticket) {
-            binding.ticketTitle.text = ticket.title
-            binding.ticketDate.text = dateFormat.format(Date(ticket.date)) // ✅ Format the epoch date
+        binding.ticketTitle.text = ticket.title
+        binding.ticketDate.text = dateFormat.format(Date(ticket.date))
 
-            binding.root.setOnClickListener {
-                onTicketClicked(ticket.id)
-            }
-            binding.ticketSolved.visibility = if (ticket.isSolved) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-
+        binding.root.setOnClickListener {
+            onTicketClicked(ticket.id)
         }
+        binding.ticketSolved.visibility = if (ticket.isSolved) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+
+    }
 
 }
 
@@ -49,7 +49,7 @@ class TicketListAdapter(
     }
 
     override fun getItemCount(): Int {
-            return tickets.size
+        return tickets.size
     }
 
     override fun onBindViewHolder(holder: TicketHolder, position: Int) {
@@ -57,5 +57,3 @@ class TicketListAdapter(
         holder.bind(ticket)
     }
 }
-
-
