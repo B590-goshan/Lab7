@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         // Fix: Ensure fragment is displayed
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, TicketDetailFragment())
+            .replace(R.id.fragment_container, TicketListFragment())
             .commit()
     }
 }
