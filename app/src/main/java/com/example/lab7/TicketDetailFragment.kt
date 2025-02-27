@@ -1,4 +1,4 @@
-package com.iub.lab7
+package com.example.lab7
 
 
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
-import com.iub.lab7.databinding.FragmentTicketDetailBinding
+import com.example.lab7.databinding.FragmentTicketDetailBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date

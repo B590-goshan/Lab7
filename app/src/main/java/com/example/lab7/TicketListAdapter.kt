@@ -1,4 +1,4 @@
-package com.iub.lab7
+package com.example.lab7
 
 import android.app.ProgressDialog.show
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.iub.lab7.databinding.ListItemTicketBinding
+import com.example.lab7.databinding.ListItemTicketBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
