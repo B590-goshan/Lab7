@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -33,9 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
+
+    buildFeatures{
         viewBinding = true
-        dataBinding = true
     }
 }
 
@@ -49,46 +50,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.core)
-    androidTestImplementation(libs.androidx.runner)
-    androidTestImplementation(libs.androidx.rules)
-    androidTestImplementation(libs.androidx.junit.v115)
-
-    androidTestImplementation(libs.androidx.espresso.core.v351)
-    androidTestImplementation(libs.androidx.espresso.contrib)
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation ("androidx.fragment:fragment-ktx:1.6.2")
-
-    androidTestImplementation(libs.androidx.espresso.contrib)
-    androidTestImplementation(libs.androidx.junit.v115)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-
-    testImplementation("junit:junit:4.13.2")
-
-    androidTestImplementation("androidx.test:core:1.5.0")
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test:rules:1.5.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.1")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation ("androidx.fragment:fragment-ktx:1.6.2")
-
-    debugImplementation("androidx.fragment:fragment-testing:1.8.3")
-}
-configurations.all {
-    resolutionStrategy {
-        force("androidx.test:core:1.5.0")
-        force("androidx.test:runner:1.5.2")
-        force("androidx.test:rules:1.5.0")
-        force("androidx.test.ext:junit:1.1.5")
-        force("androidx.test.espresso:espresso-core:3.5.1")
-        force("androidx.test.espresso:espresso-contrib:3.5.1")
-    }
+    val room_version = "2.4.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
 }
