@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/ticketListFragment"
-        android:name="com.example.lab7.TicketListFragment"
+        android:name="com.iub.lab7.TicketListFragment"
         android:label="TicketListFragment"
         tools:layout="@layout/fragment_ticket_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/ticketDetailFragment"
-        android:name="com.example.lab7.TicketDetailFragment"
+        android:name="com.iub.lab7.TicketDetailFragment"
         android:label="TicketDetailFragment"
         tools:layout="@layout/fragment_ticket_detail" >
         <argument
@@ -27,24 +27,20 @@
             android:id="@+id/select_date"
             app:destination="@id/datePickerFragment" />
         <action
-            android:id="@+id/select_time"
-            app:destination="@id/timePickerFragment" />
+            android:id="@+id/action_ticketDetailFragment_to_zoomedImageDialogFragment"
+            app:destination="@id/zoomedImageDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/datePickerFragment"
-        android:name="com.example.lab7.DatePickerFragment"
+        android:name="com.iub.lab7.DatePickerFragment"
         android:label="DatePickerFragment" >
         <argument
             android:name="ticketDate"
             app:argType="java.util.Date" />
     </dialog>
     <dialog
-        android:id="@+id/timePickerFragment"
-        android:name="com.example.lab7.TimePickerFragment"
-        android:label="TimePickerFragment" >
-        <!--        <argument-->
-        <!--            android:name="ticketTime"-->
-        <!--            app:argType="string" />-->
-    </dialog>
+        android:id="@+id/zoomedImageDialogFragment"
+        android:name="com.iub.lab7.ZoomedImageDialogFragment"
+        android:label="ZoomedImageDialogFragment"/>
 
 </navigation>
