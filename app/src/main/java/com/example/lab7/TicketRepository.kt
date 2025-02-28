@@ -1,8 +1,8 @@
-package com.example.lab7
+package com.iub.lab7
 
 import android.content.Context
 import androidx.room.Room
-import com.example.lab7.database.TicketDatabase
+import com.iub.lab7.database.TicketDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
