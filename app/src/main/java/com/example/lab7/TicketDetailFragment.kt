@@ -1,5 +1,6 @@
 package com.example.lab7
 
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,9 +18,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.lab7.databinding.FragmentTicketDetailBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.UUID
 
 private const val TAG = "TicketDetailFragment"
 
@@ -38,7 +39,7 @@ class TicketDetailFragment : Fragment(R.layout.fragment_ticket_detail) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentTicketDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -59,28 +60,30 @@ class TicketDetailFragment : Fragment(R.layout.fragment_ticket_detail) {
         }
 
         binding.apply {
-            ticketTitle.doOnTextChanged { text, _, _, _ ->
-                ticketDetailViewModel.updateTicket { oldTicket ->
-                    oldTicket.copy(title = text.toString())
+            binding.apply {
+                ticketTitle.doOnTextChanged { text, _, _, _ ->
+                    ticketDetailViewModel.updateTicket { oldTicket ->
+                        oldTicket.copy(title = text.toString())
+                    }
+                }
+
+                ticketSolved.setOnCheckedChangeListener { _, isChecked ->
+                    ticketDetailViewModel.updateTicket { oldTicket ->
+                        oldTicket.copy(isSolved = isChecked)
+                    }
                 }
             }
 
-            ticketSolved.setOnCheckedChangeListener { _, isChecked ->
-                ticketDetailViewModel.updateTicket { oldTicket ->
-                    oldTicket.copy(isSolved = isChecked)
-                }
-            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                ticketDetailViewModel.ticket.collect { ticket ->
-                    ticket?.let { updateUi(it) }
+                ticketDetailViewModel.ticket.collect {
+                        ticket -> ticket?.let { updateUi(it) }
                 }
             }
         }
 
-        // Listen for date selection result
         setFragmentResultListener(
             DatePickerFragment.REQUEST_KEY_DATE
         ) { _, bundle ->
@@ -90,13 +93,6 @@ class TicketDetailFragment : Fragment(R.layout.fragment_ticket_detail) {
             }
         }
 
-        // Listen for time selection result
-        setFragmentResultListener(
-            TimePickerFragment.REQUEST_KEY_TIME
-        ) { _, bundle ->
-            val selectedTime = bundle.getString(TimePickerFragment.BUNDLE_KEY_TIME)
-            binding.ticketTime.text = selectedTime // Update UI
-        }
     }
 
     override fun onDestroyView() {
@@ -105,31 +101,22 @@ class TicketDetailFragment : Fragment(R.layout.fragment_ticket_detail) {
     }
 
     private fun updateUi(ticket: Ticket) {
-        val dateFormat = SimpleDateFormat("EEEE, dd MMM yyyy", Locale.getDefault()) // Example: Wednesday, 26 Feb 2025
-        val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault()) // Example: 14:30
-
-        val calendar = Calendar.getInstance().apply { time = Date(ticket.date) }
-        val formattedDate = dateFormat.format(calendar.time)
-        val formattedTime = timeFormat.format(calendar.time)
+        val dateFormat = SimpleDateFormat("EEEE, dd MMM yyyy, HH:mm", Locale.getDefault()) // Example: 26 Feb 2025, 14:30
 
         binding.apply {
             if (ticketTitle.text.toString() != ticket.title) {
                 ticketTitle.setText(ticket.title)
             }
 
-            ticketDate.text = formattedDate
-            ticketTime.text = formattedTime
-
-            ticketDate.setOnClickListener {
+            ticketDate.text = dateFormat.format(Date(ticket.date))
+            ticketDate.setOnClickListener{
                 val currentDate = Date(ticket.date)
-                findNavController().navigate(TicketDetailFragmentDirections.selectDate(currentDate))
-            }
 
-            ticketTime.setOnClickListener {
-                findNavController().navigate(TicketDetailFragmentDirections.selectTime())
+                findNavController().navigate((TicketDetailFragmentDirections.selectDate(currentDate)))
             }
-
             ticketSolved.isChecked = ticket.isSolved
         }
     }
+
+
 }
