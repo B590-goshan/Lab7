@@ -3,6 +3,7 @@ package com.example.lab7
 import android.content.Context
 import androidx.room.Room
 import com.example.lab7.database.TicketDatabase
+import com.example.lab7.database.migration_1_2
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
