@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp">
-
-    <!-- Toolbar for Delete Action -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="Ticket Details"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <TextView
         android:layout_width="match_parent"
@@ -59,5 +49,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ticket_report_text" />
+
+    <Button
+        android:id="@+id/ticket_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ticket_call_text" />
 
 </LinearLayout>
