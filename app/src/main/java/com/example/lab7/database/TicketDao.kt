@@ -1,11 +1,11 @@
-package com.iub.lab7.database
+package com.example.lab7.database
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.iub.lab7.Ticket
+import com.example.lab7.Ticket
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 
