@@ -1,4 +1,4 @@
-package com.iub.lab7
+package com.example.lab7
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -23,7 +23,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.iub.lab7.databinding.FragmentTicketDetailBinding
+import com.example.lab7.databinding.FragmentTicketDetailBinding
 import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
@@ -101,7 +101,7 @@ class TicketDetailFragment : Fragment(R.layout.fragment_ticket_detail) {
                 val photoFile = File(requireContext().applicationContext.filesDir, photoName)
                 val photoUri = FileProvider.getUriForFile(
                     requireContext(),
-                    "com.iub.lab7.fileprovider",
+                    "com.example.lab7.fileprovider",
                     photoFile
                 )
                 takePhoto.launch(photoUri)

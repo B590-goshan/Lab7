@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/ticketListFragment"
-        android:name="com.iub.lab7.TicketListFragment"
+        android:name="com.example.lab7.TicketListFragment"
         android:label="TicketListFragment"
         tools:layout="@layout/fragment_ticket_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/ticketDetailFragment"
-        android:name="com.iub.lab7.TicketDetailFragment"
+        android:name="com.example.lab7.TicketDetailFragment"
         android:label="TicketDetailFragment"
         tools:layout="@layout/fragment_ticket_detail" >
         <argument
@@ -32,7 +32,7 @@
     </fragment>
     <dialog
         android:id="@+id/datePickerFragment"
-        android:name="com.iub.lab7.DatePickerFragment"
+        android:name="com.example.lab7.DatePickerFragment"
         android:label="DatePickerFragment" >
         <argument
             android:name="ticketDate"
@@ -40,7 +40,7 @@
     </dialog>
     <dialog
         android:id="@+id/zoomedImageDialogFragment"
-        android:name="com.iub.lab7.ZoomedImageDialogFragment"
+        android:name="com.example.lab7.ZoomedImageDialogFragment"
         android:label="ZoomedImageDialogFragment"/>
 
 </navigation>

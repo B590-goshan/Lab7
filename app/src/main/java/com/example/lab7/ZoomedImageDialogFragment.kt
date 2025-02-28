@@ -1,4 +1,4 @@
-package com.iub.lab7
+package com.example.lab7
 
 import android.app.Dialog
 import android.graphics.BitmapFactory
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
-import com.iub.lab7.databinding.FragmentZoomedImageBinding
+import com.example.lab7.databinding.FragmentZoomedImageBinding
 import java.io.File
 
 class ZoomedImageDialogFragment : DialogFragment() {
