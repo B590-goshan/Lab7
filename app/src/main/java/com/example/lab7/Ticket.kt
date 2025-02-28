@@ -13,5 +13,7 @@ data class Ticket(
     @PrimaryKey val id: UUID = java.util.UUID.randomUUID(),
     val title: String,
     val date: Long,
-    val isSolved: Boolean
+    val isSolved: Boolean,
+    val assignee: String = "",
+    val photoFileName: String? = null
 )
