@@ -27,7 +27,7 @@
         </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.iub.lab7.fileprovider"
+            android:authorities="com.example.lab7.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
