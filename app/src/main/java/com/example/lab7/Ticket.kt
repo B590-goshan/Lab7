@@ -10,8 +10,10 @@ import com.example.lab7.database.TicketTypeConverter
 @TypeConverters(TicketTypeConverter::class) // Ensure TypeConverter is used
 @Entity
 data class Ticket(
-    @PrimaryKey val id: String = java.util.UUID.randomUUID().toString(),
+    @PrimaryKey val id: UUID = java.util.UUID.randomUUID(),
     val title: String,
     val date: Long,
-    val isSolved: Boolean
+    val isSolved: Boolean,
+    val assignee: String = "",
+    val photoFileName: String? = null
 )
