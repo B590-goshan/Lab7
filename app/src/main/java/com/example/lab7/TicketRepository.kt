@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.lab7.database.TicketDatabase
 import com.example.lab7.database.migration_1_2
+import com.example.lab7.database.migration_2_3
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
@@ -19,33 +20,24 @@ class TicketRepository private constructor(
         TicketDatabase::class.java,
         DATABASE_NAME
     )
-        .addMigrations(migration_1_2)
+        .addMigrations(migration_1_2, migration_2_3)
+        .fallbackToDestructiveMigration()
         .build()
 
     fun getTickets(): Flow<List<Ticket>> = database.ticketDao().getTickets()
-
     fun getTicket(id: UUID): Flow<Ticket> = database.ticketDao().getTicket(id)
-
     fun updateTicket(ticket: Ticket)
     {
         coroutineScope.launch {
             database.ticketDao().updateTicket(ticket)
         }
     }
-
     fun addTicket(ticket: Ticket)
     {
         coroutineScope.launch {
             database.ticketDao().addTicket(ticket)
         }
     }
-
-    fun deleteTicket(ticket: Ticket) {
-        coroutineScope.launch {
-            database.ticketDao().deleteTicket(ticket)
-        }
-    }
-
     companion object {
         private var INSTANCE: TicketRepository? = null
 
